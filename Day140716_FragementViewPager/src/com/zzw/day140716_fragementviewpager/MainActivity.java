@@ -1,220 +1,231 @@
 package com.zzw.day140716_fragementviewpager;
 
 import java.util.ArrayList;
-import java.util.List;
+
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.app.Activity;
-import android.app.LocalActivityManager;
 import android.content.Context;
-import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
-import android.support.v4.view.PagerAdapter;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.DisplayMetrics;
-import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
-import android.widget.TabHost;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 
-    Context context = null;
-    LocalActivityManager manager = null;
-    ViewPager pager = null;
-    TabHost tabHost = null;
-    TextView t1,t2,t3;
-    
-    private int offset = 0;// 动画图片偏移量
-    private int currIndex = 0;// 当前页卡编号
-    private int bmpW;// 动画图片宽度
-    private ImageView cursor;// 动画图片
+	private Context mContext;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+	private TextView ATab; // A的标题
+	private TextView BTab; // B的标题
+	private ImageView mCursorImgView; // 页卡切换指针
+	private View mViewContainer;
+	private ViewPager mPager;
+	
+	private static ArrayList<Fragment> mFragmeList;
+	private AFragment mAFragment;
+	private BFragment mBFragment;
+	private MyAdapter mAdapter;
+	
+	
 
-        context = MainActivity.this;
-        manager = new LocalActivityManager(this , true);
-        manager.dispatchCreate(savedInstanceState);
+	private static final int TITLE_NUM = 2;
+	private int offset = 0; // 动画图片偏移量
+	private int bmpW; // 动画图片宽度
+	private int currentPager;
 
-        InitImageView();
-        initTextView();
-        initPagerViewer();
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		mContext = MainActivity.this;
+		setUpViews();
+	}
 
-    }
-    /**
-     * 初始化标题
-     */
-    private void initTextView() {
-        t1 = (TextView) findViewById(R.id.text1);
-        t2 = (TextView) findViewById(R.id.text2);
-        t3 = (TextView) findViewById(R.id.text3);
+	private void setUpViews() {
+		setContentView(R.layout.activity_main);
 
-        t1.setOnClickListener(new MyOnClickListener(0));
-        t2.setOnClickListener(new MyOnClickListener(1));
-        t3.setOnClickListener(new MyOnClickListener(2));
-        
-    }
-    /**
-     * 初始化PageViewer
-     */
-    private void initPagerViewer() {
-        pager = (ViewPager) findViewById(R.id.viewpage);
-        final ArrayList<View> list = new ArrayList<View>();
-        Intent intent = new Intent(context, A.class);
-        list.add(getView("A", intent));
-        Intent intent2 = new Intent(context, B.class);
-        list.add(getView("B", intent2));
-        Intent intent3 = new Intent(context, C.class);
-        list.add(getView("C", intent3));
+		mViewContainer = findViewById(R.id.viewpager_container);
 
-        pager.setAdapter(new MyPagerAdapter(list));
-        pager.setCurrentItem(0);
-        pager.setOnPageChangeListener(new MyOnPageChangeListener());
-    }
-    /**
-     * 初始化动画
-     */
-    private void InitImageView() {
-        cursor = (ImageView) findViewById(R.id.cursor);
-        bmpW = BitmapFactory.decodeResource(getResources(), R.drawable.divider_normal)
-        .getWidth();// 获取图片宽度
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-        int screenW = dm.widthPixels;// 获取分辨率宽度
-        offset = (screenW / 3 - bmpW) / 2;// 计算偏移量
-        Matrix matrix = new Matrix();
-        matrix.postTranslate(offset, 0);
-        cursor.setImageMatrix(matrix);// 设置动画初始位置
-    }
+		initTab(); // 初始化分页标题
+		initCursor(TITLE_NUM); // 初始化分页指针
+		initPager(); // 初始化分页
+	}
 
-    /**
-     * 通过activity获取视图
-     * @param id
-     * @param intent
-     * @return
-     */
-    private View getView(String id, Intent intent) {
-        return manager.startActivity(id, intent).getDecorView();
-    }
+	/**
+	 * 初始化tab
+	 */
+	private void initTab() {
+		ATab = (TextView) findViewById(R.id.left);
+		ATab.setTextColor(getResources().getColor(R.color.black));
 
-    /**
-     * Pager适配器
-     */
-    public class MyPagerAdapter extends PagerAdapter{
-        List<View> list =  new ArrayList<View>();
-        public MyPagerAdapter(ArrayList<View> list) {
-            this.list = list;
-        }
+		BTab = (TextView) findViewById(R.id.right);
+		
+		ATab.setOnClickListener(new TextView.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				mPager.setCurrentItem(0);
+			}
+		});
+		BTab.setOnClickListener(new TextView.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				mPager.setCurrentItem(1);
+			}
+		});
+	}
 
-        @Override
-        public void destroyItem(ViewGroup container, int position,
-                Object object) {
-            ViewPager pViewPager = ((ViewPager) container);
-            pViewPager.removeView(list.get(position));
-        }
+	/**
+	 * 初始化分页指针
+	 * 
+	 * @param titleNum 页卡数
+	 */
+	private void initCursor(int titleNum) {
+		DisplayMetrics dm = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(dm);
+		int screenW = dm.widthPixels; // 获取分辨率宽度
+		bmpW = dm.widthPixels / 2;
+		mCursorImgView = (ImageView) findViewById(R.id.cursor);
+		Bitmap cursorBitmap = BitmapFactory.decodeResource(getResources(),
+				R.drawable.tab_cursor2);// 获取图片宽度
+		Bitmap bmp = Bitmap.createScaledBitmap(cursorBitmap, bmpW,
+				cursorBitmap.getHeight(), true);
+		mCursorImgView.setImageBitmap(bmp);
+		offset = 0; // 计算偏移量
+		Matrix matrix = new Matrix();
+		matrix.postTranslate(offset, 0);
+		mCursorImgView.setImageMatrix(matrix); // 设置动画初始位置
+	}
 
-        @Override
-        public boolean isViewFromObject(View arg0, Object arg1) {
-            return arg0 == arg1;
-        }
+	/**
+	 * 初始化页卡
+	 */
+	private void initPager() {
 
-        @Override
-        public int getCount() {
-            return list.size();
-        }
-        @Override
-        public Object instantiateItem(View arg0, int arg1) {
-            ViewPager pViewPager = ((ViewPager) arg0);
-            pViewPager.addView(list.get(arg1));
-            return list.get(arg1);
-        }
+		mFragmeList = new ArrayList<Fragment>();
+		mAFragment = new AFragment();
+		mBFragment = new BFragment();
 
-        @Override
-        public void restoreState(Parcelable arg0, ClassLoader arg1) {
+		mFragmeList.add(mAFragment);
+		mFragmeList.add(mBFragment);
 
-        }
+		mAdapter = new MyAdapter(getSupportFragmentManager());
 
-        @Override
-        public Parcelable saveState() {
-            return null;
-        }
+		mPager = (ViewPager) findViewById(R.id.viewpage);
+		mPager.setAdapter(mAdapter);
+		mPager.setOnPageChangeListener(new MyOnPageChangeListener());
+		currentPager = 0;
 
-        @Override
-        public void startUpdate(View arg0) {
-        }
-    }
-    /**
-     * 页卡切换监听
-     */
-    public class MyOnPageChangeListener implements OnPageChangeListener {
+	}
 
-        int one = offset * 2 + bmpW;// 页卡1 -> 页卡2 偏移量
-        int two = one * 2;// 页卡1 -> 页卡3 偏移量
+	/**
+	 * 根据Pager的滑动更新指针的滑动
+	 * 
+	 * @param arg0 当前page
+	 * @param arg1 滑动的比例
+	 * @param arg2
+	 */
+	private void updateCursorRealTime(int arg0, float arg1, int arg2) {
+		// 确定当前指针的位置，根据pager滑动的情况（arg1和arg2决定）
+		int one = offset * 2 + bmpW;
+		Matrix matrix = new Matrix();
+		if (arg1 != 0) {
+			matrix.postTranslate(offset + one * arg1, 0);
+			mCursorImgView.setImageMatrix(matrix);
+		}
+	}
 
-        @Override
-        public void onPageSelected(int arg0) {
-            Animation animation = null;
-            switch (arg0) {
-            case 0:
-                if (currIndex == 1) {
-                    animation = new TranslateAnimation(one, 0, 0, 0);
-                } else if (currIndex == 2) {
-                    animation = new TranslateAnimation(two, 0, 0, 0);
-                }
-                break;
-            case 1:
-                if (currIndex == 0) {
-                    animation = new TranslateAnimation(offset, one, 0, 0);
-                } else if (currIndex == 2) {
-                    animation = new TranslateAnimation(two, one, 0, 0);    
-                }
-                break;
-            case 2:
-                if (currIndex == 0) {
-                    animation = new TranslateAnimation(offset, two, 0, 0);
-                } else if (currIndex == 1) {
-                    animation = new TranslateAnimation(one, two, 0, 0);
-                }
-                break;
-            }
-            currIndex = arg0;
-            animation.setFillAfter(true);// True:图片停在动画结束位置
-            animation.setDuration(300);
-            cursor.startAnimation(animation);
-        }
+	/**
+	 * 更新tab
+	 * 
+	 * @param arg0
+	 */
+	private void updateTab(int arg0) {
+		switch (arg0) {
+		case 0:
+			ATab.setTextColor(getResources().getColor(R.color.black));
+			BTab.setTextColor(getResources().getColor(
+					R.color.silver_grey));
+			currentPager = 0;
+			break;
+		case 1:
+			ATab.setTextColor(getResources().getColor(
+					R.color.silver_grey));
+			BTab.setTextColor(getResources().getColor(R.color.black));
+			currentPager = 1;
+			break;
+		default:
+			break;
+		}
+	}
 
-        @Override
-        public void onPageScrollStateChanged(int arg0) {
-            
-        }
+	/**
+	 * 监听页卡切换动作，更新tab及指针状态
+	 * 
+	 * @author litingchang
+	 * 
+	 */
+	class MyOnPageChangeListener implements OnPageChangeListener {
 
-        @Override
-        public void onPageScrolled(int arg0, float arg1, int arg2) {
-            
-        }
-    }
-    /**
-     * 头标点击监听
-     */
-    public class MyOnClickListener implements View.OnClickListener {
-        private int index = 0;
+		@Override
+		public void onPageScrollStateChanged(int arg0) {
+		}
 
-        public MyOnClickListener(int i) {
-            index = i;
-        }
+		@Override
+		public void onPageScrolled(int arg0, float arg1, int arg2) {
+			// 实时更新指针，指针随着Pager的滑动滑动
+			updateCursorRealTime(arg0, arg1, arg2);
 
-        @Override
-        public void onClick(View v) {
-            pager.setCurrentItem(index);
-        }
-    };
+		}
+
+		@Override
+		public void onPageSelected(int arg0) {
+			// 更新title的选中状态O
+			updateTab(arg0);
+		}
+	}
+
+	/**
+	 * 详情页Viewpager适配器
+	 * 
+	 * @author litingchang
+	 * 
+	 */
+	public static class MyAdapter extends FragmentStatePagerAdapter {
+
+		public MyAdapter(FragmentManager fm) {
+			super(fm);
+		}
+
+		@Override
+		public int getCount() {
+			return mFragmeList.size();
+		}
+
+		@Override
+		public Fragment getItem(int arg0) {
+			return mFragmeList.get(arg0);
+		}
+
+		@Override
+		public void destroyItem(View container, int position, Object object) {
+			super.destroyItem(container, position, object);
+		}
+
+		@Override
+		public Object instantiateItem(View arg0, int arg1) {
+			return super.instantiateItem(arg0, arg1);
+		}
+
+		@Override
+		public boolean isViewFromObject(View view, Object object) {
+			return super.isViewFromObject(view, object);
+		}
+	}
 }

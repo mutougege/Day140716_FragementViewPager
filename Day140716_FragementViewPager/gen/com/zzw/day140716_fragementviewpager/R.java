@@ -10,6 +10,137 @@ package com.zzw.day140716_fragementviewpager;
 public final class R {
     public static final class attr {
     }
+    public static final class color {
+        /**  个人中心action文字颜色 action修改、退出等
+         */
+        public static final int account_center_action_color=0x7f040005;
+        /**  个人中心item文字颜色 
+         */
+        public static final int account_center_item_color=0x7f040002;
+        /**  个人中心items可更新数字背景颜色 
+         */
+        public static final int account_center_item_number_bg_color=0x7f040004;
+        /**  个人中心items数字颜色 
+         */
+        public static final int account_center_item_number_color=0x7f040003;
+        /**  个人中心签名颜色 
+         */
+        public static final int account_center_signature_color=0x7f040007;
+        /**  个人中心，编辑 头像背景色
+         */
+        public static final int account_edit_avatar_bg_normal_color=0x7f040006;
+        public static final int account_edit_avater_bg_normal=0x7f04003f;
+        public static final int account_safe_light=0x7f040034;
+        public static final int add_comment_share_msg=0x7f040033;
+        public static final int asset_info_color=0x7f040022;
+        public static final int asset_title_color=0x7f040021;
+        public static final int black=0x7f04000a;
+        /**  共同喜欢的文字颜色 
+         */
+        public static final int both_favourite_number_color=0x7f040008;
+        public static final int bule=0x7f04000f;
+        public static final int cate_item_font_color=0x7f040035;
+        public static final int comment_divider_color=0x7f040029;
+        /**  comment item device name and time 
+         */
+        public static final int comment_light=0x7f040024;
+        public static final int comment_list_background=0x7f04002a;
+        public static final int comment_list_pressed_color=0x7f04002b;
+        public static final int comment_reply=0x7f040023;
+        public static final int comment_reply_reference_bg=0x7f04002c;
+        public static final int comment_v1_black_color=0x7f040026;
+        public static final int comment_v1_blue_color=0x7f040025;
+        public static final int comment_v1_gray_color=0x7f040027;
+        public static final int comment_v1_light_gray_color=0x7f040028;
+        public static final int common_view_focus_bg_color=0x7f040009;
+        /**  机型控件颜色 
+         */
+        public static final int device_color=0x7f040001;
+        public static final int download_mgr_text_color=0x7f040010;
+        /**  下载圆圈颜色值 
+         */
+        public static final int download_normal_color=0x7f040045;
+        public static final int downloading_other_color=0x7f040046;
+        /**  礼包中使用的颜色 
+         */
+        public static final int end_time_text=0x7f04004d;
+        public static final int forget_psw=0x7f04003b;
+        public static final int giftbag_code=0x7f04004e;
+        public static final int green=0x7f04000d;
+        public static final int header_background=0x7f04002d;
+        public static final int header_background_translucent=0x7f04002e;
+        public static final int hint_foreground_light=0x7f040019;
+        /**  热词颜色 
+         */
+        public static final int hotword_color=0x7f040039;
+        /**  增量更新 
+         */
+        public static final int iu_installing_text=0x7f040044;
+        /**  标题前的色块 
+         */
+        public static final int li_tag_blue=0x7f040042;
+        public static final int li_tag_yello=0x7f040043;
+        public static final int line_dark=0x7f040041;
+        /**  线色值 
+         */
+        public static final int line_light=0x7f040040;
+        /**  ListView 斑马线 
+         */
+        public static final int list_item_background=0x7f04002f;
+        /**  wcy 
+         */
+        public static final int list_item_background_light=0x7f040030;
+        public static final int loading_line=0x7f04001f;
+        public static final int move_disable_color=0x7f04004a;
+        public static final int perms_dangerous_grp_color=0x7f04001b;
+        public static final int perms_dangerous_perm_color=0x7f04001c;
+        /**  chendy modify start
+	<color name="progressbar_progress">#d16464</color> 
+         */
+        public static final int progressbar_progress=0x7f040017;
+        public static final int rank_number_color=0x7f040049;
+        public static final int red=0x7f04000c;
+        public static final int regist_error_message_color=0x7f04003d;
+        public static final int regist_success_message_color=0x7f04003c;
+        public static final int runk_down_color=0x7f040037;
+        public static final int runk_new_color=0x7f040038;
+        /**  热词列表上升下降数值颜色 
+         */
+        public static final int runk_up_color=0x7f040036;
+        public static final int search_filter_bg=0x7f04003a;
+        public static final int search_tag=0x7f040020;
+        /**  chendy modify end 
+         */
+        public static final int shadow=0x7f040018;
+        public static final int silver_grey=0x7f04001a;
+        public static final int solid_blue=0x7f040014;
+        public static final int solid_green=0x7f040015;
+        public static final int solid_red=0x7f040013;
+        public static final int solid_yellow=0x7f040016;
+        public static final int sub_tab_selected_color=0x7f040048;
+        public static final int sub_tab_unselected_color=0x7f040047;
+        /**  应用辑 
+         */
+        public static final int subscribe_news_list_color_grey=0x7f04003e;
+        /**  排行下面标签的颜色 
+         */
+        public static final int tab_text_gray=0x7f04004b;
+        public static final int tab_text_white=0x7f04004c;
+        public static final int tab_top_text_default_color=0x7f040011;
+        public static final int title_background=0x7f04001d;
+        /**     <color name="list_item_background_light_new">#f9f9f9</color> 
+ ActivityMain tabTitle 文字 未选中时对应 的颜色。 引用位置： ActivityMain setCurrentTab() 
+         */
+        public static final int toolbar_tabtitle_unselected=0x7f040031;
+        public static final int transparent=0x7f040012;
+        public static final int view_background=0x7f04001e;
+        public static final int weekly_item_bg_color=0x7f040032;
+        public static final int white=0x7f04000b;
+        public static final int yellow=0x7f04000e;
+        /**  应用汇背景色 统一 
+         */
+        public static final int yingyonghui_background=0x7f040000;
+    }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
 
@@ -17,35 +148,67 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f040000;
-        public static final int activity_vertical_margin=0x7f040001;
+        public static final int activity_horizontal_margin=0x7f050000;
+        public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
+        public static final int black=0x7f020009;
+        public static final int blue=0x7f020004;
+        public static final int cate_item_bg_deep_blue=0x7f02000e;
+        public static final int cate_item_bg_light_blue=0x7f02000f;
+        /**  The line's color that be included relative layout. 
+         */
+        public static final int cut_off_line_color=0x7f02001b;
+        public static final int dialog_btn_normal=0x7f020011;
+        public static final int dialog_btn_pressed=0x7f020012;
         public static final int divider_normal=0x7f020000;
+        public static final int gray=0x7f020008;
+        public static final int green=0x7f020005;
+        public static final int grey=0x7f020010;
         public static final int ic_launcher=0x7f020001;
+        public static final int ic_pressed_bg=0x7f02001d;
+        public static final int light_black=0x7f02000b;
+        public static final int light_gray=0x7f02000c;
+        public static final int list_item_bg=0x7f02000d;
+        public static final int list_item_focus_bg=0x7f020018;
+        public static final int more_reply_default_bg=0x7f020019;
+        public static final int more_reply_pressed_bg=0x7f02001a;
+        public static final int pure_blue=0x7f02000a;
+        public static final int red=0x7f020003;
+        public static final int screen_background_black=0x7f020013;
+        public static final int tab_cursor2=0x7f020002;
+        /**  头像选择对话框的黄色区域 
+         */
+        public static final int tips_yellowarea_color=0x7f02001e;
+        public static final int translucent_background=0x7f020014;
+        public static final int translucent_background_light=0x7f020017;
+        public static final int transmucent_background=0x7f020015;
+        public static final int transparent_background=0x7f020016;
+        public static final int weekly_item_bg_color=0x7f02001c;
+        public static final int white=0x7f020007;
+        public static final int yellow=0x7f020006;
     }
     public static final class id {
-        public static final int action_settings=0x7f080006;
-        public static final int cursor=0x7f080004;
-        public static final int linearLayout1=0x7f080000;
-        public static final int text1=0x7f080001;
-        public static final int text2=0x7f080002;
-        public static final int text3=0x7f080003;
-        public static final int viewpage=0x7f080005;
+        public static final int action_settings=0x7f090006;
+        public static final int cursor=0x7f090004;
+        public static final int left=0x7f090002;
+        public static final int linearLayout1=0x7f090001;
+        public static final int right=0x7f090003;
+        public static final int viewpage=0x7f090005;
+        public static final int viewpager_container=0x7f090000;
     }
     public static final class layout {
         public static final int a=0x7f030000;
         public static final int activity_main=0x7f030001;
         public static final int b=0x7f030002;
-        public static final int c=0x7f030003;
     }
     public static final class menu {
-        public static final int main=0x7f070000;
+        public static final int main=0x7f080000;
     }
     public static final class string {
-        public static final int action_settings=0x7f050001;
-        public static final int app_name=0x7f050000;
-        public static final int hello_world=0x7f050002;
+        public static final int action_settings=0x7f060001;
+        public static final int app_name=0x7f060000;
+        public static final int hello_world=0x7f060002;
     }
     public static final class style {
         /** 
@@ -69,10 +232,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f070000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f070001;
     }
 }

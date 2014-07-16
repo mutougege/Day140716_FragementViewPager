@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    
+    <!-- 应用汇背景色 统一 -->
+    <color name="yingyonghui_background">#fffafafa</color>
+    <!-- 机型控件颜色 -->
+    <color name="device_color">#f67c65</color>
+    <!-- 个人中心item文字颜色 -->
+    <color name="account_center_item_color">#2c4f6f</color>
+    <!-- 个人中心items数字颜色 -->
+    <color name="account_center_item_number_color">#909fab</color>
+    <!-- 个人中心items可更新数字背景颜色 -->
+    <color name="account_center_item_number_bg_color">#f6c7b5</color>
+    <!-- 个人中心action文字颜色 action修改、退出等-->
+    <color name="account_center_action_color">#545555</color>
+    <!-- 个人中心，编辑 头像背景色-->
+    <color name="account_edit_avatar_bg_normal_color">#f0f0f0</color>
+    
+    <!-- 个人中心签名颜色 -->
+    <color name="account_center_signature_color">#828b91</color>
+    
+    <!-- 共同喜欢的文字颜色 -->
+    <color name="both_favourite_number_color">#4b4f54</color>
+    
+	<drawable name="red">#7f00</drawable>
+	<drawable name="blue">#770000ff</drawable>
+	<drawable name="green">#7700ff00</drawable>
+	<drawable name="yellow">#77ffff00</drawable>
+	<drawable name="white">#ffffffff</drawable>
+	<drawable name="gray">#ff333333</drawable>
+	<drawable name="black">#ff000000</drawable>
+	<drawable name="pure_blue">#77c8f7</drawable>
+	<drawable name="light_black">#ff333333</drawable>
+	<drawable name="light_gray">#f0f0f0</drawable>
+	<drawable name="list_item_bg">#ffF6F6F6</drawable>
+	<drawable name="cate_item_bg_deep_blue">#ffcbd9e3</drawable>
+	<drawable name="cate_item_bg_light_blue">#ffeaf0f4</drawable>
+	<drawable name="grey">#ff888888</drawable>
+	
+	<drawable name="dialog_btn_normal">#fafafa</drawable>
+	<drawable name="dialog_btn_pressed">#cacaca</drawable>
+	
+	<drawable name="screen_background_black">#ff000000</drawable>
+	<drawable name="translucent_background">#e0000000</drawable>
+	<drawable name="transmucent_background">#a0000000</drawable>
+	<drawable name="transparent_background">#00000000</drawable>
+	<drawable name="translucent_background_light">#88000000</drawable>
+	
+	<color name="common_view_focus_bg_color">#a6deff</color>
+	<drawable name="list_item_focus_bg">#a6deff</drawable>
+	
+	<drawable name="more_reply_default_bg">#e8e8e8</drawable>
+	<drawable name="more_reply_pressed_bg">#208cd6</drawable>
+
+	<color name="black">#ff000000</color>
+	<color name="white">#fff</color>
+	<color name="red">#ffff0000</color>
+	<color name="green">#ff00ff00</color>
+	<color name="yellow">#ffffff00</color>
+	<color name="bule">#ff0000ff</color>
+	
+	<color name="download_mgr_text_color">#484848</color>
+	
+	<color name="tab_top_text_default_color">#666666</color>
+	    
+	<color name="transparent">#00000000</color>
+	
+	<color name="solid_red">#f00</color>
+	<color name="solid_blue">#0000ff</color>
+	<color name="solid_green">#f0f0</color>
+	<color name="solid_yellow">#ffffff00</color>
+	<!-- chendy modify start
+	<color name="progressbar_progress">#d16464</color> -->
+	<color name="progressbar_progress">#72ceb9</color>
+	<!-- chendy modify end -->
+	<color name="shadow">#00000000</color>
+	<color name="hint_foreground_light">#808080</color>
+	<color name="silver_grey">#868686</color>
+
+	<color name="perms_dangerous_grp_color">@color/asset_info_color</color>
+	<color name="perms_dangerous_perm_color">@color/asset_info_color</color>
+	
+	<color name="title_background">#828282</color>
+	<color name="view_background">#1c1c1c</color>
+    <color name="loading_line">#003c80</color>
+    <color name="search_tag">#2F6ABA</color>
+    
+    <color name="asset_title_color">#000000</color>
+    <color name="asset_info_color">#747373</color>
+    
+    <color name="comment_reply">#2f8a23</color>
+    
+    <!-- comment item device name and time -->
+    <color name="comment_light">#858585</color>
+    
+    <color name="comment_v1_blue_color">#509fdb</color>
+    <color name="comment_v1_black_color">#414141</color>
+    <color name="comment_v1_gray_color">#939393</color>
+    <color name="comment_v1_light_gray_color">#e8e8e8</color>
+    
+    <color name="comment_divider_color">#ebebeb</color>
+    <color name="comment_list_background">#fafafa</color>
+    <color name="comment_list_pressed_color">#e1e1e1</color>
+    <color name="comment_reply_reference_bg">#f2f2f2</color>
+    
+    <color name="header_background">#ffe6e6e6</color>  
+    <color name="header_background_translucent">#e0e6e6e6</color>  
+        
+    <!-- ListView 斑马线 -->
+    <color name="list_item_background">#f4f4f4</color>
+    <!-- wcy -->
+    <color name="list_item_background_light">#efefef</color>
+ <!--    <color name="list_item_background_light_new">#f9f9f9</color> -->
+    <!-- ActivityMain tabTitle 文字 未选中时对应 的颜色。 引用位置： ActivityMain setCurrentTab() -->
+    <color name="toolbar_tabtitle_unselected">#77FFFFFF</color>
+    
+    <!-- The line's color that be included relative layout. -->
+    <drawable name="cut_off_line_color">#bfbfbf</drawable>
+    
+    <drawable name="weekly_item_bg_color">#ebebeb</drawable>
+    <color name="weekly_item_bg_color">#ebebeb</color>
+    <color name="add_comment_share_msg">#f6b13a</color>
+    
+    <color name="account_safe_light">#717171</color>
+    
+    <color name="cate_item_font_color">#ff104772</color>
+    
+    <!-- 热词列表上升下降数值颜色 -->
+    <color name="runk_up_color">#f51e01</color>
+    <color name="runk_down_color">#73bf45</color>
+    <color name="runk_new_color">#2495eb</color>
+    <!-- 热词颜色 -->
+    <color name="hotword_color">#6d6d6d</color>
+    <color name="search_filter_bg">#e8e8e8</color>
+    
+    <drawable name="ic_pressed_bg">#aa2d98dd</drawable>
+    <color name="forget_psw">#4396c7</color>
+    
+    
+    <color name="regist_success_message_color">#717171</color>
+    <color name="regist_error_message_color">#da0f0f</color>
+    <!-- 应用辑 -->
+    <color name="subscribe_news_list_color_grey">#4b4f54</color>
+    <color name="account_edit_avater_bg_normal">#f0f0f0</color>
+    
+    <!-- 线色值 -->
+    <color name="line_light">#fafafa</color>
+    <color name="line_dark">#d7d7d7</color>
+    
+    <!-- 标题前的色块 -->
+    <color name="li_tag_blue">#3d5d9e</color>
+    <color name="li_tag_yello">#ffc20e</color>
+        <!-- 头像选择对话框的黄色区域 -->
+    <drawable name="tips_yellowarea_color">#ffc20e</drawable>
+    <!-- 增量更新 -->
+    <color name="iu_installing_text">#98b1c1</color>
+    <!-- 下载圆圈颜色值 -->
+    <color name="download_normal_color">#8f98b3</color>
+    <color name="downloading_other_color">#72ceb9</color>
+    <color name="sub_tab_unselected_color">#797980</color>
+    <color name="sub_tab_selected_color">#000000</color>
+    <color name="rank_number_color">#747373</color>
+    <color name="move_disable_color">#bcbcbd</color>
+    
+    <!-- 排行下面标签的颜色 -->
+    <color name="tab_text_gray">#ff828288</color>    
+    <color name="tab_text_white">#ffffffff</color> 
+    <!-- 礼包中使用的颜色 -->   
+    <color name="end_time_text">#ffec1212</color>    
+    <color name="giftbag_code">#ff3b3b3b</color>    
+</resources>
