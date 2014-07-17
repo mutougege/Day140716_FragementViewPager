@@ -119,6 +119,12 @@ public class MainActivity extends FragmentActivity {
 
 		mPager = (ViewPager) findViewById(R.id.viewpage);
 		mPager.setAdapter(mAdapter);
+		mAdapter.setOnReloadListener(new OnReloadListener(){
+            @Override
+            public void onReload(){
+            	mAFragment.update();
+            }
+        });
 		mPager.setOnPageChangeListener(new MyOnPageChangeListener());
 		currentPager = 0;
 
@@ -191,16 +197,26 @@ public class MainActivity extends FragmentActivity {
 		}
 	}
 
+	public MyAdapter getAdapter(){
+        return mAdapter;
+    }
+	
 	/**
 	 * ÏêÇéÒ³ViewpagerÊÊÅäÆ÷
 	 * 
 	 * @author litingchang
 	 * 
 	 */
-	public static class MyAdapter extends FragmentStatePagerAdapter {
+	public static class MyAdapter extends FragmentStatePagerAdapter{
 
+		private OnReloadListener mListener;
+		
 		public MyAdapter(FragmentManager fm) {
 			super(fm);
+		}
+
+		public void setOnReloadListener(OnReloadListener listener) {
+			this.mListener = listener;
 		}
 
 		@Override
@@ -227,5 +243,15 @@ public class MainActivity extends FragmentActivity {
 		public boolean isViewFromObject(View view, Object object) {
 			return super.isViewFromObject(view, object);
 		}
+		
+		public void reLoad() {
+			if(mListener != null){
+	            mListener.onReload();
+	        }
+	        this.notifyDataSetChanged();
+		}
+		
 	}
+
+	
 }

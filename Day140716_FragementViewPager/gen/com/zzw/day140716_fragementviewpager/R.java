@@ -189,13 +189,16 @@ public final class R {
         public static final int yellow=0x7f020006;
     }
     public static final class id {
-        public static final int action_settings=0x7f090006;
-        public static final int cursor=0x7f090004;
-        public static final int left=0x7f090002;
-        public static final int linearLayout1=0x7f090001;
-        public static final int right=0x7f090003;
-        public static final int viewpage=0x7f090005;
-        public static final int viewpager_container=0x7f090000;
+        public static final int action_settings=0x7f090009;
+        public static final int button=0x7f090008;
+        public static final int content=0x7f090001;
+        public static final int cursor=0x7f090006;
+        public static final int left=0x7f090004;
+        public static final int linearLayout1=0x7f090003;
+        public static final int name=0x7f090000;
+        public static final int right=0x7f090005;
+        public static final int viewpage=0x7f090007;
+        public static final int viewpager_container=0x7f090002;
     }
     public static final class layout {
         public static final int a=0x7f030000;

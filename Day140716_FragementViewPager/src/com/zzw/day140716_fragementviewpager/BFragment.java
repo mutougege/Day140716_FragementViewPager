@@ -7,12 +7,16 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 public class BFragment extends Fragment{
 	private final String TAG = "AFragment";
-	private Activity activity;
+	private MainActivity activity;
 	private Context mContext;
+	
+	private Button mButton;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,13 @@ public class BFragment extends Fragment{
 	}
 
 	private void initView(View view) {
-		
+		mButton = (Button) view.findViewById(R.id.button);
+		mButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+			    activity.getAdapter().reLoad();
+			}
+		});
 	}
 }

@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 public class AFragment extends Fragment{
@@ -15,7 +16,9 @@ public class AFragment extends Fragment{
 	private final String TAG = "AFragment";
 	private Activity activity;
 	private Context mContext;
-
+	
+	private TextView content; 
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,10 +44,14 @@ public class AFragment extends Fragment{
 	}
 
 	private void initData() {
-		
+		content.setText("111111111111111111");
 	}
 
 	private void initView(View view) {
-		
+		content = (TextView) view.findViewById(R.id.content);
+	}
+
+	public void update() {
+		content.setText("222222222222222222");
 	}
 }
